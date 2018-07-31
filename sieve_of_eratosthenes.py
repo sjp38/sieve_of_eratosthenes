@@ -3,12 +3,14 @@
 import sys
 
 def cross_off(flags, prime):
+    "Mark multiple numbers of the 'prime' as not prime"
     to_crossoff = prime * 2;
     while to_crossoff < len(flags):
         flags[to_crossoff] = False
         to_crossoff += prime
 
 def next_prime(flags, prime):
+    "Find next prime number larger than the 'prime'"
     offset = prime + 1
     while offset < len(flags):
         if flags[offset] == True:
@@ -17,6 +19,7 @@ def next_prime(flags, prime):
     return offset
 
 def sieve_of_erat(max_):
+    # If N-th flag is True, N is prime number
     flags = [True] * (max_ + 1)
     flags[0] = False
     flags[1] = False
