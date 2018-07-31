@@ -4,7 +4,11 @@ import sys
 
 def cross_off(flags, prime):
     "Mark multiple numbers of the 'prime' as not prime"
-    to_crossoff = prime * 2;
+    # Non-prime numbers are multiple of prime numbers.  Since we marked
+    # multiples of all smaller prime numbers as false, 'prime * n' which n is
+    # smaller than 'prime' would already marked as false.  So, we can start
+    # from 'prime^2'.
+    to_crossoff = prime * prime;
     while to_crossoff < len(flags):
         flags[to_crossoff] = False
         to_crossoff += prime
