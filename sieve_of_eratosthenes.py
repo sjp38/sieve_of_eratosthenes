@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import argparse
 import sys
 
 def cross_off(flags, prime):
@@ -38,8 +39,8 @@ def sieve_of_erat(max_):
             print i
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print "Usage: %s <max integer>"
-        exit(1)
-    max_ = int(sys.argv[1])
+    parser = argparse.ArgumentParser()
+    parser.add_argument('max number', metavar='max_number', type=int, nargs=1,
+            help='maximum value of prime number')
+    max_ = vars(parser.parse_args())['max number'][0]
     sieve_of_erat(max_)
